@@ -1,0 +1,16 @@
+services:
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: assessment_postgres
+    environment:
+      POSTGRES_USER: MyUser
+      POSTGRES_PASSWORD: MyPassword1234
+      POSTGRES_DB: AssessmentTestDb
+    ports:
+      - "5432:5432"
+    volumes:
+      - assessment_pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  assessment_pgdata:
